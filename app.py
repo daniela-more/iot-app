@@ -1,32 +1,19 @@
 import numpy as np
-
-'''
-virtualen env
-MAC: source env/bin/activate 
-WINDOWS: source env/Scripts/activate
-pip install numpy
-pip install pandas scikit-learn 
-pip install flask
-pip install pylint
-pip 
-192.168.1.224
-'''
-
-from flask import Flask,render_template
+from flask_ngrok import run_with_ngrok
+from flask import Flask,render_template,request
 app = Flask(__name__)
-
-'''
-@app.route('/')
-def hello_world():
-    return 'Hello, ,dsd!'
-'''
+run_with_ngrok(app)  # Start ngrok when app is run
 
 @app.route('/')
 def index():
     name = "Mi Chiamo Manuel Rucci FINE DI OGGI"
     return render_template('index.html', name=name)
 
-'''
+@app.route("/upload", methods=["POST"])
+def upload():
+    uploaded_files = request.files.getlist("file[]")
+    print(uploaded_files)
+    return ""
+
 if __name__ == "__main__":
-    app.run(host='0.0.0.0',port=6600,debug=True)
-'''
+    app.run()
