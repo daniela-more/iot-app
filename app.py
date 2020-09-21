@@ -7,8 +7,11 @@ app = Flask(__name__)
 # https://iot-app-course.herokuapp.com/
 @app.route('/')
 def index():
-    name = "Mi Chiamo Manuel Rucci FINE Lezione di Lunedi"
-    return render_template('index.html', name=name)
+    return render_template('index.html', 
+                            name="Manuel",
+                            surname="Rucci",
+                            eta="26",
+                            sesso="Maschio")
 
 if __name__ == "__main__":
     app.run()
