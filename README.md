@@ -1,4 +1,4 @@
 # iot-app
 IOT flask app
 
-HO CAMBIATO QUALCOSA fdsfdsf gfdsgsdgdsgfdsg fdsfdsfdsfds
+HO CAMBIATO QUALCOSA fdsfdsf
