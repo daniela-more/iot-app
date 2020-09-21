@@ -13,10 +13,14 @@
         <h3>{{eta | safe}}</h3> 
         <h4>{{sesso | safe}}</h4>
 		<h4>{{collaboratore | safe}}</h4>
-        <div id="figure"></div>
+        <div id="figure1"></div>
+        <div id="figure2"></div>
+        
         <script>
             var config = {responsive: true}; 
-            Plotly.newPlot("figure", {{fig | safe}}.data, {{fig | safe}}.layout,config);
+            Plotly.newPlot("figure1", {{fig1 | safe}}.data, {{fig1 | safe}}.layout,config);
+            Plotly.newPlot("figure2", {{fig2 | safe}}.data, {{fig2 | safe}}.layout,config);
+            
         </script>
     </body>
 </html>

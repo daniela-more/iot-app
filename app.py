@@ -17,15 +17,17 @@ def load_data():
 def index():
     df = load_data()
     select = ["deceduti","totale_casi","dimessi_guariti"]
-    fig = plot_plotly(df,x ="data", y=select,title="Andamento Nazionale")    
-    
+    fig1 = plot_plotly(df,x ="data", y=select,title="Andamento Nazionale")    
+    fig2 = plot_plotly(df,x ="data", y=["variazione_totale_positivi"],title="Variazione totale positivi")   
     return render_template('index.html', 
                             name="Manuel",
                             surname="Rucci",
                             eta="26",
                             sesso="Maschio",
 							collaboratore = "Sono Ugo e collaboro all'app",
-                            fig= convert_plotly_fig_to_json(fig))
+                            fig1= convert_plotly_fig_to_json(fig1),
+                            fig2= convert_plotly_fig_to_json(fig2),
+                            )
 
 if __name__ == "__main__":
     app.run()
