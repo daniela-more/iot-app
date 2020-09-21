@@ -4,6 +4,8 @@
         <style>
             body   { font-family: sans-serif; background-color: #B7D1FF; margin : 10px 150px 10px  150px;}
         </style>
+        <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"></script>
+        <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
     </head>
     <body>
         <h1>{{name | safe}}</h1> 
@@ -11,6 +13,11 @@
         <h3>{{eta | safe}}</h3> 
         <h4>{{sesso | safe}}</h4>
 		<h4>{{collaboratore | safe}}</h4>
+        <div id="figure"></div>
+        <script>
+            var config = {responsive: true}; 
+            Plotly.newPlot("figure", {{fig | safe}}.data, {{fig | safe}}.layout,config);
+        </script>
     </body>
 </html>
 
