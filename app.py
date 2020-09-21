@@ -24,7 +24,7 @@ def index():
                             surname="Rucci",
                             eta="26",
                             sesso="Maschio",
-							collaboratore = "Sono Ugo e collaboro all'app")
+							collaboratore = "Sono Ugo e collaboro all'app",
                             fig= convert_plotly_fig_to_json(fig))
 
 if __name__ == "__main__":
