@@ -4,6 +4,7 @@ from flask import Flask,render_template,request
 app = Flask(__name__)
 #run_with_ngrok(app)  # Start ngrok when app is run
 
+# https://iot-app-course.herokuapp.com/
 @app.route('/')
 def index():
     name = "Mi Chiamo Manuel Rucci FINE Lezione di Lunedi"
