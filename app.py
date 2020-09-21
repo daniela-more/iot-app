@@ -17,7 +17,7 @@ def load_data():
 def index():
     df = load_data()
     select = ["deceduti","totale_casi","dimessi_guariti","variazione_totale_positivi"]
-    fig = plot_plotly(df,x ="data", y=["deceduti","dimessi_guariti","totale_positivi"],title="Andamento Nazionale")    
+    fig = plot_plotly(df,x ="data", y=select,title="Andamento Nazionale")    
     
     return render_template('index.html', 
                             name="Manuel",
