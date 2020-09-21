@@ -11,7 +11,8 @@ def index():
                             name="Manuel",
                             surname="Rucci",
                             eta="26",
-                            sesso="Maschio")
+                            sesso="Maschio",
+							collaboratore = "Sono Ugo e collaboro all'app")
 
 if __name__ == "__main__":
     app.run()
