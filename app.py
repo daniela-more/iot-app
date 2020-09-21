@@ -6,7 +6,7 @@ run_with_ngrok(app)  # Start ngrok when app is run
 
 @app.route('/')
 def index():
-    name = "Mi Chiamo Manuel Rucci FINE DI OGGI"
+    name = "Mi Chiamo Manuel Rucci FINE Lezione di Lunedi"
     return render_template('index.html', name=name)
 
 @app.route("/upload", methods=["POST"])
