@@ -1,6 +1,8 @@
 import numpy as np
 #from flask_ngrok import run_with_ngrok
 from flask import Flask,render_template,request
+from utils import *
+
 app = Flask(__name__)
 #run_with_ngrok(app)  # Start ngrok when app is run
 
