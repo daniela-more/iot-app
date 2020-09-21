@@ -91,3 +91,6 @@ def convert_image_to_base64(fig,ext="png"):
     return string
 
 def export_matplotlib_image(fig,name, ext="png"):
+    path = name + "." + ext
+    fig.savefig(path,dpi=300, transparent=False)
+     
