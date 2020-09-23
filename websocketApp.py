@@ -41,6 +41,7 @@ def update_func():
         fig3_json = json.loads(convert_plotly_fig_to_json(fig3))
         fig4_json = json.loads(convert_plotly_fig_to_json(fig4))
         
+        # Trovami anomalie
         socketio.emit("stream", {   "date": df.iloc[ii]["data"] ,
                                     "fig1_data": fig1_json["data"] , 
                                     "fig1_layout": fig1_json["layout"],
@@ -69,10 +70,14 @@ time.sleep(2)
 def sessions():
     return render_template('websocket.html')
 
+@app.route('/test')
+def sessions_test():
+    return render_template('index.html')
+
 @socketio.on('connected')
 def handle_my_custom_event(json, methods=['GET', 'POST']):
     print('received my event: ' + str(json))
 
 
 if __name__ == '__main__':
-    socketio.run(app) #, debug=True)
+    socketio.run(app) #, host="0.0.0.0") #, debug=True)

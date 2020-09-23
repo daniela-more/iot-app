@@ -3,6 +3,24 @@
 * [APP LINK](https://iot-app-course.herokuapp.com/)
 * https://iot-app-course.herokuapp.com/
 
+## Setup Locally
+
+```
+virtualenv env
+Windows: source env/Scripts/activate
+MAC: source env/bin/activate
+pip install -r requirements.txt
+
+# python
+App HTTP: python app.py
+App WEBSOCKET: python websocketApp.py
+
+# guinicorn
+App HTTP: gunicorn app:app --log-file=- --bind=0.0.0.0:4500
+App WEBSOCKET: gunicorn -k eventlet  -w 1 --log-file=- websocketApp:app --bind=0.0.0.0:4500
+```
+
+
 ## Setup Heroku
 
 ```
