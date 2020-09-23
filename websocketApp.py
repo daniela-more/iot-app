@@ -21,8 +21,10 @@ def update_func():
     df = load_data()
     start=True
     while(start):
-        if df.values.shape[0]<(ii-3):
-            start=False
+        if (df.values.shape[0]-1)==ii:
+            ii=3
+            #start=False
+            time.sleep(2)
         else:
             ii =ii+1
         time.sleep(0.1)
