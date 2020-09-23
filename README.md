@@ -1,7 +1,7 @@
 # iot-app
-IOT flask app
-HO ciao
 
+* [APP LINK](https://iot-app-course.herokuapp.com/)
+* https://iot-app-course.herokuapp.com/
 
 ## Setup Heroku
 
