@@ -34,5 +34,5 @@ toml==0.10.1
 typed-ast==1.4.1
 Werkzeug==1.0.1
 wrapt==1.12.1
-python-socketio==4.6.0
-gevent-socketio==0.3.6
+Flask-SocketIO==4.3.1
+eventlet==0.27.0
