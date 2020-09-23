@@ -7,7 +7,7 @@
 
 ```
 Procfile: web: gunicorn app:app --log-file=-
-Procfile: web: web: gunicorn -k eventlet --log-file=- websocketApp:app
+Procfile: web: web: gunicorn -k eventlet  -w 1 --log-file=- websocketApp:app
 ```
 
 * [Flas-SocketIO ](https://flask-socketio.readthedocs.io/en/latest/)

@@ -1,1 +1,1 @@
-web: gunicorn -k eventlet --log-file=- websocketApp:app
+web: gunicorn -k eventlet -w 1 --log-file=- websocketApp:app
