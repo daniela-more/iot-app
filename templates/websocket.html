@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Flask-SocketIO Test</title>
+        <script src="//code.jquery.com/jquery-1.12.4.min.js" integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ=" crossorigin="anonymous"></script>
+        <script src="//cdnjs.cloudflare.com/ajax/libs/socket.io/2.2.0/socket.io.js" integrity="sha256-yr4fRk/GU1ehYJPAs8P4JlTgu0Hdsp4ZKrx8bDEDC3I=" crossorigin="anonymous"></script>      
+        <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+        <style>
+            body   { font-family: sans-serif; background-color: #B7D1FF; margin : 10px 150px 10px  150px;}
+        </style>
+
+    </head>
+    <body>
+        <h1>Timer</h3>
+        <h2 id="message_data"></h2>    
+        <div id="message_fig1"></div>
+        <div id="message_fig2"></div>
+        
+        <script>
+            $(document).ready(function(){
+                var socket = io.connect('http://' + document.domain + ':' + location.port);
+                
+                socket.on( 'connect', function() {
+                    socket.emit( 'connected', {
+                        data: 'User Connected'
+                    })
+                })
+
+                socket.on( 'stream', function( msg ) {
+                    //console.log( msg["data"] )
+                    var config = {responsive: true}; 
+                    Plotly.newPlot("message_fig1", msg.fig1_data, msg.fig1_layout,config);
+                    Plotly.newPlot("message_fig2", msg.fig2_data, msg.fig2_layout,config);
+                    $( '#message_data' ).text(msg.date) 
+
+                })
+            });
+        </script>
+    </body>
+</html>
