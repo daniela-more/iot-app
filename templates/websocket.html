@@ -6,20 +6,75 @@
         <script src="//cdnjs.cloudflare.com/ajax/libs/socket.io/2.2.0/socket.io.js" integrity="sha256-yr4fRk/GU1ehYJPAs8P4JlTgu0Hdsp4ZKrx8bDEDC3I=" crossorigin="anonymous"></script>      
         <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
         <style>
-            body   { font-family: sans-serif; background-color: #204051; margin : 10px 350px 10px  350px;}
+            body   { font-family: sans-serif; background-color: #204051; margin : 10px 150px 10px  150px;}
+
+            .row {
+                display: flex;
+            }
+            .column {
+                flex: 50%;
+            }
+            .container {
+                background-color: red;   /* #0E1428; #22252b;*/
+                /*margin: 10px !important;*/
+                /*margin: 10px !important;*/
+                /*box-shadow: 2px 2px 2px lightgray;*/
+            }
+            .header {
+                font-size: 20px;
+                font-weight: bold;
+                color: white;
+                padding: 1px;
+                padding-left: 47%;
+                background-color: red;   /* #0E1428; #22252b;*/
+                /*margin: 10px !important;*/
+                /*box-shadow: 2px 2px 2px lightgray;*/
+        
+            }
             @media only screen and (max-width: 1400px) {
                 body {
                     margin : 10px 10px 10px 10px;
                 }
+                .row{
+                    flex-direction: column;
+                }
             }
+
         </style>
 
     </head>
     <body>
-        <h1>Timer</h3>
-        <h2 id="message_data"></h2>    
-        <div id="message_fig1"></div>
-        <div id="message_fig2"></div>
+        <div class="header" id="message_data"></div>
+         
+        <div class="container">
+            <div class=row>
+                <div class="column">
+                    <div class="container"> 
+                        <div id="message_fig1"></div>
+                    </div>
+                </div>
+                <div class="column">
+                    <div class="container"> 
+                        <div id="message_fig2"></div>
+                    </div>
+                </div>
+            </div>
+        </div>   
+
+        <div class="container">
+            <div class=row>
+                <div class="column">
+                    <div class="container"> 
+                        <div id="message_fig3"></div>
+                    </div>
+                </div>
+                <div class="column">
+                    <div class="container"> 
+                        <div id="message_fig4"></div>
+                    </div>
+                </div>
+            </div>
+        </div>   
         
         <script>
             $(document).ready(function(){
@@ -37,6 +92,8 @@
                     var config = {responsive: true}; 
                     Plotly.newPlot("message_fig1", msg.fig1_data, msg.fig1_layout,config);
                     Plotly.newPlot("message_fig2", msg.fig2_data, msg.fig2_layout,config);
+                    Plotly.newPlot("message_fig3", msg.fig3_data, msg.fig3_layout,config);
+                    Plotly.newPlot("message_fig4", msg.fig4_data, msg.fig4_layout,config);
                     $( '#message_data' ).text(msg.date) 
 
                 })

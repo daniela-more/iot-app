@@ -15,10 +15,12 @@ def load_data():
     df = pd.read_csv("https://raw.githubusercontent.com/pcm-dpc/COVID-19/master/dati-andamento-nazionale/dpc-covid19-ita-andamento-nazionale.csv")
     df["data"] = [el[0:10] for el in df["data"].values.tolist()]
     return df 
+
 def update_func():
     dfplot = []
     ii = 3
     df = load_data()
+    print(df.keys())
     start=True
     while(start):
         if (df.values.shape[0]-1)==ii:
@@ -30,14 +32,26 @@ def update_func():
         time.sleep(0.1)
         dfplot = df.iloc[0:ii]
         fig1 = plot_plotly(dfplot,x ="data", y=["deceduti","totale_casi","dimessi_guariti"],title="Andamento Nazionale")    
-        fig2 = plot_plotly(dfplot,x ="data", y=["variazione_totale_positivi"],title="Variazione totale positivi")   
+        fig2 = plot_plotly(dfplot,x ="data", y=["variazione_totale_positivi"],title="Variazione totale positivi")
+        fig3 = plot_plotly(dfplot,x ="data", y=["terapia_intensiva"],title="Terapia Intensiva")
+        fig4 = plot_plotly(dfplot,x ="data", y=["tamponi"],title="Tamponi")
+        
         fig1_json = json.loads(convert_plotly_fig_to_json(fig1))
         fig2_json = json.loads(convert_plotly_fig_to_json(fig2))
+        fig3_json = json.loads(convert_plotly_fig_to_json(fig3))
+        fig4_json = json.loads(convert_plotly_fig_to_json(fig4))
+        
         socketio.emit("stream", {   "date": df.iloc[ii]["data"] ,
                                     "fig1_data": fig1_json["data"] , 
                                     "fig1_layout": fig1_json["layout"],
                                     "fig2_data": fig2_json["data"] , 
                                     "fig2_layout": fig2_json["layout"],
+                                    "fig3_data": fig3_json["data"] ,    
+                                    "fig3_layout": fig3_json["layout"],
+                                    "fig4_data": fig4_json["data"] , 
+                                    "fig4_layout": fig4_json["layout"],
+
+
                                 })
 def timer():
     i=0
